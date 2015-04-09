@@ -10,7 +10,7 @@
 <script>
 connect();
 function connect() {
-    var log =  io.connect('192.168.80.131:8089/log', {
+    var log =  io.connect('{{domain}}:{{port}}/log', {
 		transports: ['websocket']
 	});
 	log.on('log:new',function(data){
