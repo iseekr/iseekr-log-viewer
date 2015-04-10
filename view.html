@@ -3,8 +3,20 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 </head>
 <body>
+
+<table class="table table-bordered">
+  <tr>
+  	<th>log</th>
+  </tr>
+  <tbody id="table">
+  	
+  </tbody>
+</table>
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.2/socket.io.min.js"></script>
 <script src="http://scdn.bozhong.com/source/common/js/jquery.min.js"></script>
 <script>
@@ -13,8 +25,9 @@ function connect() {
     var log =  io.connect('{{domain}}:{{port}}/log', {
 		transports: ['websocket']
 	});
-	log.on('log:new',function(data){
+	log.on('log:new:raw',function(data){
 		console.log(data);
+		$('#table').append('<tr><td>'+data+'</td></tr>')
 	});
 } 
 </script>

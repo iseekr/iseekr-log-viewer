@@ -10,6 +10,7 @@ var log = app.io.of('log');
 
 app.get('/x.gif', function(req, res, next) {
 	log.emit('log:new', req.query);
+	log.emit('log:new:raw',req.originalUrl);
 	res.status(204).send();
 });
 
